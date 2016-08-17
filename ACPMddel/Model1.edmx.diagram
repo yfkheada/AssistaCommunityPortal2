@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c937c8f4a534438bad93c8053fa7c2dd" Name="Diagram1">
+        <EntityTypeShape EntityType="eclaimlinkportalModel.clinician" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="eclaimlinkportalModel.codingset" Width="1.5" PointX="8.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="eclaimlinkportalModel.course" Width="1.5" PointX="3.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="eclaimlinkportalModel.facilities_allowed_training" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="eclaimlinkportalModel.facility" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="eclaimlinkportalModel.log" Width="1.5" PointX="10.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="eclaimlinkportalModel.role" Width="1.5" PointX="10.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="eclaimlinkportalModel.session" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="eclaimlinkportalModel.ticket" Width="1.5" PointX="5.25" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="eclaimlinkportalModel.ticketcategory" Width="1.5" PointX="3" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="eclaimlinkportalModel.user" Width="1.5" PointX="3" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="eclaimlinkportalModel.userrole" Width="1.5" PointX="10.75" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="eclaimlinkportalModel.usersession" Width="1.5" PointX="8.25" PointY="7.875" IsExpanded="true" />
+        <AssociationConnector Association="eclaimlinkportalModel.FK_tblClinicians_Facilities" ManuallyRouted="false" />
+        <AssociationConnector Association="eclaimlinkportalModel.FK_tblSessions_tblCourses" ManuallyRouted="false" />
+        <AssociationConnector Association="eclaimlinkportalModel.userfacility" ManuallyRouted="false" />
+        <AssociationConnector Association="eclaimlinkportalModel.FK_tblUserSessions_tblSessions" ManuallyRouted="false" />
+        <AssociationConnector Association="eclaimlinkportalModel.FK_Ticket_TicketCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="eclaimlinkportalModel.FK_Ticket_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="eclaimlinkportalModel.FK_tblUserSessions_Users1" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

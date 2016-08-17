@@ -1,0 +1,828 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="eclaimlinkportalModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.7" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="clinician">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" />
+          <Property Name="License" Type="varchar" MaxLength="50" />
+          <Property Name="facilityId" Type="int" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="Phone" Type="varchar" MaxLength="50" />
+          <Property Name="Address" Type="varchar" MaxLength="50" />
+          <Property Name="CreationDate" Type="datetime" Precision="6" />
+        </EntityType>
+        <EntityType Name="codingset">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="codingsystem" Type="varchar" MaxLength="200" />
+          <Property Name="codedesignation" Type="varchar" MaxLength="50" />
+          <Property Name="publisher" Type="varchar" MaxLength="50" />
+          <Property Name="version" Type="varchar" MaxLength="50" />
+          <Property Name="domain" Type="varchar" MaxLength="100" />
+          <Property Name="filename" Type="varchar" MaxLength="50" />
+          <Property Name="agreementrequest" Type="bool" />
+          <Property Name="ingenixrequest" Type="bool" />
+          <Property Name="cdtagreementrequest" Type="bool" />
+          <Property Name="downloadmessageinstead" Type="varchar" MaxLength="100" />
+          <Property Name="updatedate" Type="datetime" Precision="0" />
+          <Property Name="isactive" Type="bool" />
+          <Property Name="listname" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="course">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="150" />
+          <Property Name="maxAtten" Type="int" />
+        </EntityType>
+        <EntityType Name="facilities_allowed_training">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="License" Type="varchar" MaxLength="20" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="facility">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="License" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="200" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="FacilityType" Type="utinyint" />
+          <Property Name="StartDate" Type="datetime" Precision="6" />
+          <Property Name="ExpiryDate" Type="datetime" Precision="6" />
+          <Property Name="CodingSet_IngenixRequested" Type="bool" />
+          <Property Name="CodingSet_AgreementSigned" Type="bool" />
+          <Property Name="CodingSet_CDTAgreementSigned" Type="bool" />
+          <Property Name="CodingSet_IngenixRequestDate" Type="datetime" Precision="6" />
+          <Property Name="activated" Type="bool" />
+          <Property Name="activateDate" Type="datetime" Precision="6" />
+          <Property Name="ToActivate" Type="bool" />
+          <Property Name="ingenix_usersno" Type="int" />
+          <Property Name="validated" Type="bool" />
+          <Property Name="demo" Type="bool" />
+          <Property Name="license_eclaimlink" Type="varchar" MaxLength="20" />
+          <Property Name="license_dha" Type="varchar" MaxLength="20" />
+          <Property Name="ProviderType" Type="varchar" MaxLength="100" />
+          <Property Name="Source" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="logs">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="applicationid" Type="int" />
+          <Property Name="action" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="status" Type="smallint" />
+          <Property Name="details" Type="varchar" MaxLength="400" />
+          <Property Name="createddate" Type="datetime" Precision="0" />
+          <Property Name="params" Type="varchar" MaxLength="800" />
+        </EntityType>
+        <EntityType Name="role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="session">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="500" />
+          <Property Name="Description" Type="varchar" MaxLength="500" />
+          <Property Name="StartDate" Type="datetime" Precision="6" />
+          <Property Name="EndDate" Type="datetime" Precision="6" />
+          <Property Name="Location" Type="varchar" MaxLength="150" />
+          <Property Name="Status" Type="int" />
+          <Property Name="courseId" Type="int" />
+        </EntityType>
+        <EntityType Name="ticket">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="createdby" Type="int" Nullable="false" />
+          <Property Name="closedby" Type="int" />
+          <Property Name="createdat" Type="datetime" Precision="6" />
+          <Property Name="closedat" Type="datetime" Precision="6" />
+          <Property Name="lastupdate" Type="datetime" Precision="6" />
+          <Property Name="referenceno" Type="varchar" MaxLength="50" />
+          <Property Name="categoryid" Type="int" />
+          <Property Name="severity" Type="smallint" />
+          <Property Name="title" Type="varchar" MaxLength="300" />
+          <Property Name="details" Type="longtext" />
+          <Property Name="phone" Type="varchar" MaxLength="50" />
+          <Property Name="email" Type="varchar" MaxLength="100" />
+          <Property Name="attachment" Type="varchar" MaxLength="100" />
+          <Property Name="status" Type="smallint" />
+          <Property Name="CloseDetails" Type="longtext" />
+        </EntityType>
+        <EntityType Name="ticketcategory">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="username" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="100" />
+          <Property Name="facilityId" Type="int" />
+        </EntityType>
+        <EntityType Name="userrole">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userId" Type="int" Nullable="false" />
+          <Property Name="roleId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="usersession">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userId" Type="int" />
+          <Property Name="sessionId" Type="int" />
+          <Property Name="name" Type="varchar" MaxLength="150" />
+          <Property Name="email" Type="varchar" MaxLength="100" />
+          <Property Name="phone" Type="varchar" MaxLength="50" />
+          <Property Name="Occupation_Profession" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <Association Name="FK_tblClinicians_Facilities">
+          <End Role="facility" Type="Self.facility" Multiplicity="0..1" />
+          <End Role="clinician" Type="Self.clinician" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="facility">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="clinician">
+              <PropertyRef Name="facilityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblSessions_tblCourses">
+          <End Role="course" Type="Self.course" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="session" Type="Self.session" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="course">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="session">
+              <PropertyRef Name="courseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUserSessions_tblSessions">
+          <End Role="session" Type="Self.session" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="usersession" Type="Self.usersession" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="session">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="usersession">
+              <PropertyRef Name="sessionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUserSessions_Users1">
+          <End Role="user" Type="Self.user" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="usersession" Type="Self.usersession" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="usersession">
+              <PropertyRef Name="userId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ticket_TicketCategory">
+          <End Role="ticketcategory" Type="Self.ticketcategory" Multiplicity="0..1" />
+          <End Role="ticket" Type="Self.ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ticketcategory">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ticket">
+              <PropertyRef Name="categoryid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ticket_Users">
+          <End Role="user" Type="Self.user" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ticket" Type="Self.ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ticket">
+              <PropertyRef Name="createdby" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="userfacility">
+          <End Role="facility" Type="Self.facility" Multiplicity="0..1" />
+          <End Role="user" Type="Self.user" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="facility">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="user">
+              <PropertyRef Name="facilityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="eclaimlinkportalModelStoreContainer">
+          <EntitySet Name="clinician" EntityType="Self.clinician" Schema="eclaimlinkportal" store:Type="Tables" />
+          <EntitySet Name="codingset" EntityType="Self.codingset" Schema="eclaimlinkportal" store:Type="Tables" />
+          <EntitySet Name="course" EntityType="Self.course" Schema="eclaimlinkportal" store:Type="Tables" />
+          <EntitySet Name="facilities_allowed_training" EntityType="Self.facilities_allowed_training" Schema="eclaimlinkportal" store:Type="Tables" />
+          <EntitySet Name="facility" EntityType="Self.facility" Schema="eclaimlinkportal" store:Type="Tables" />
+          <EntitySet Name="logs" EntityType="Self.logs" Schema="eclaimlinkportal" store:Type="Tables" />
+          <EntitySet Name="role" EntityType="Self.role" Schema="eclaimlinkportal" store:Type="Tables" />
+          <EntitySet Name="session" EntityType="Self.session" Schema="eclaimlinkportal" store:Type="Tables" />
+          <EntitySet Name="ticket" EntityType="Self.ticket" Schema="eclaimlinkportal" store:Type="Tables" />
+          <EntitySet Name="ticketcategory" EntityType="Self.ticketcategory" Schema="eclaimlinkportal" store:Type="Tables" />
+          <EntitySet Name="user" EntityType="Self.user" Schema="eclaimlinkportal" store:Type="Tables" />
+          <EntitySet Name="userrole" EntityType="Self.userrole" Schema="eclaimlinkportal" store:Type="Tables" />
+          <EntitySet Name="usersession" EntityType="Self.usersession" Schema="eclaimlinkportal" store:Type="Tables" />
+          <AssociationSet Name="FK_tblClinicians_Facilities" Association="Self.FK_tblClinicians_Facilities">
+            <End Role="facility" EntitySet="facility" />
+            <End Role="clinician" EntitySet="clinician" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblSessions_tblCourses" Association="Self.FK_tblSessions_tblCourses">
+            <End Role="course" EntitySet="course" />
+            <End Role="session" EntitySet="session" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUserSessions_tblSessions" Association="Self.FK_tblUserSessions_tblSessions">
+            <End Role="session" EntitySet="session" />
+            <End Role="usersession" EntitySet="usersession" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUserSessions_Users1" Association="Self.FK_tblUserSessions_Users1">
+            <End Role="user" EntitySet="user" />
+            <End Role="usersession" EntitySet="usersession" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ticket_TicketCategory" Association="Self.FK_Ticket_TicketCategory">
+            <End Role="ticketcategory" EntitySet="ticketcategory" />
+            <End Role="ticket" EntitySet="ticket" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ticket_Users" Association="Self.FK_Ticket_Users">
+            <End Role="user" EntitySet="user" />
+            <End Role="ticket" EntitySet="ticket" />
+          </AssociationSet>
+          <AssociationSet Name="userfacility" Association="Self.userfacility">
+            <End Role="facility" EntitySet="facility" />
+            <End Role="user" EntitySet="user" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="eclaimlinkportalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="clinician">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="License" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="facilityId" Type="Int32" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreationDate" Type="DateTime" />
+          <NavigationProperty Name="facility" Relationship="Self.FK_tblClinicians_Facilities" FromRole="clinician" ToRole="facility" />
+        </EntityType>
+        <EntityType Name="codingset">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="codingsystem" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="codedesignation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="publisher" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="version" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="domain" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="filename" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="agreementrequest" Type="Boolean" />
+          <Property Name="ingenixrequest" Type="Boolean" />
+          <Property Name="cdtagreementrequest" Type="Boolean" />
+          <Property Name="downloadmessageinstead" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="updatedate" Type="DateTime" />
+          <Property Name="isactive" Type="Boolean" />
+          <Property Name="listname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="course">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="maxAtten" Type="Int32" />
+          <NavigationProperty Name="session" Relationship="Self.FK_tblSessions_tblCourses" FromRole="course" ToRole="session" />
+        </EntityType>
+        <EntityType Name="facilities_allowed_training">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="License" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="facility">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="License" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FacilityType" Type="Byte" />
+          <Property Name="StartDate" Type="DateTime" />
+          <Property Name="ExpiryDate" Type="DateTime" />
+          <Property Name="CodingSet_IngenixRequested" Type="Boolean" />
+          <Property Name="CodingSet_AgreementSigned" Type="Boolean" />
+          <Property Name="CodingSet_CDTAgreementSigned" Type="Boolean" />
+          <Property Name="CodingSet_IngenixRequestDate" Type="DateTime" />
+          <Property Name="activated" Type="Boolean" />
+          <Property Name="activateDate" Type="DateTime" />
+          <Property Name="ToActivate" Type="Boolean" />
+          <Property Name="ingenix_usersno" Type="Int32" />
+          <Property Name="validated" Type="Boolean" />
+          <Property Name="demo" Type="Boolean" />
+          <Property Name="license_eclaimlink" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="license_dha" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ProviderType" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Source" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="clinician" Relationship="Self.FK_tblClinicians_Facilities" FromRole="facility" ToRole="clinician" />
+          <NavigationProperty Name="user" Relationship="Self.userfacility" FromRole="facility" ToRole="user" />
+        </EntityType>
+        <EntityType Name="log">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="applicationid" Type="Int32" />
+          <Property Name="action" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="status" Type="Int16" />
+          <Property Name="details" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Name="createddate" Type="DateTime" />
+          <Property Name="params" Type="String" MaxLength="800" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="session">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="StartDate" Type="DateTime" />
+          <Property Name="EndDate" Type="DateTime" />
+          <Property Name="Location" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="Int32" />
+          <Property Name="courseId" Type="Int32" />
+          <NavigationProperty Name="course" Relationship="Self.FK_tblSessions_tblCourses" FromRole="session" ToRole="course" />
+          <NavigationProperty Name="usersession" Relationship="Self.FK_tblUserSessions_tblSessions" FromRole="session" ToRole="usersession" />
+        </EntityType>
+        <EntityType Name="ticket">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="createdby" Type="Int32" Nullable="false" />
+          <Property Name="closedby" Type="Int32" />
+          <Property Name="createdat" Type="DateTime" />
+          <Property Name="closedat" Type="DateTime" />
+          <Property Name="lastupdate" Type="DateTime" />
+          <Property Name="referenceno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="categoryid" Type="Int32" />
+          <Property Name="severity" Type="Int16" />
+          <Property Name="title" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="details" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Name="phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="attachment" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="Int16" />
+          <Property Name="CloseDetails" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ticketcategory" Relationship="Self.FK_Ticket_TicketCategory" FromRole="ticket" ToRole="ticketcategory" />
+          <NavigationProperty Name="user" Relationship="Self.FK_Ticket_Users" FromRole="ticket" ToRole="user" />
+        </EntityType>
+        <EntityType Name="ticketcategory">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ticket" Relationship="Self.FK_Ticket_TicketCategory" FromRole="ticketcategory" ToRole="ticket" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="facilityId" Type="Int32" />
+          <NavigationProperty Name="facility" Relationship="Self.userfacility" FromRole="user" ToRole="facility" />
+          <NavigationProperty Name="ticket" Relationship="Self.FK_Ticket_Users" FromRole="user" ToRole="ticket" />
+          <NavigationProperty Name="usersession" Relationship="Self.FK_tblUserSessions_Users1" FromRole="user" ToRole="usersession" />
+        </EntityType>
+        <EntityType Name="userrole">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userId" Type="Int32" Nullable="false" />
+          <Property Name="roleId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="usersession">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userId" Type="Int32" />
+          <Property Name="sessionId" Type="Int32" />
+          <Property Name="name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Occupation_Profession" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="session" Relationship="Self.FK_tblUserSessions_tblSessions" FromRole="usersession" ToRole="session" />
+          <NavigationProperty Name="user" Relationship="Self.FK_tblUserSessions_Users1" FromRole="usersession" ToRole="user" />
+        </EntityType>
+        <Association Name="FK_tblClinicians_Facilities">
+          <End Role="facility" Type="Self.facility" Multiplicity="0..1" />
+          <End Role="clinician" Type="Self.clinician" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="facility">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="clinician">
+              <PropertyRef Name="facilityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblSessions_tblCourses">
+          <End Role="course" Type="Self.course" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="session" Type="Self.session" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="course">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="session">
+              <PropertyRef Name="courseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="userfacility">
+          <End Role="facility" Type="Self.facility" Multiplicity="0..1" />
+          <End Role="user" Type="Self.user" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="facility">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="user">
+              <PropertyRef Name="facilityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUserSessions_tblSessions">
+          <End Role="session" Type="Self.session" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="usersession" Type="Self.usersession" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="session">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="usersession">
+              <PropertyRef Name="sessionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ticket_TicketCategory">
+          <End Role="ticketcategory" Type="Self.ticketcategory" Multiplicity="0..1" />
+          <End Role="ticket" Type="Self.ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ticketcategory">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ticket">
+              <PropertyRef Name="categoryid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ticket_Users">
+          <End Role="user" Type="Self.user" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ticket" Type="Self.ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ticket">
+              <PropertyRef Name="createdby" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUserSessions_Users1">
+          <End Role="user" Type="Self.user" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="usersession" Type="Self.usersession" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="usersession">
+              <PropertyRef Name="userId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="eclaimlinkportalEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="clinicians" EntityType="Self.clinician" />
+          <EntitySet Name="codingsets" EntityType="Self.codingset" />
+          <EntitySet Name="courses" EntityType="Self.course" />
+          <EntitySet Name="facilities_allowed_training" EntityType="Self.facilities_allowed_training" />
+          <EntitySet Name="facilities" EntityType="Self.facility" />
+          <EntitySet Name="logs" EntityType="Self.log" />
+          <EntitySet Name="roles" EntityType="Self.role" />
+          <EntitySet Name="sessions" EntityType="Self.session" />
+          <EntitySet Name="tickets" EntityType="Self.ticket" />
+          <EntitySet Name="ticketcategories" EntityType="Self.ticketcategory" />
+          <EntitySet Name="users" EntityType="Self.user" />
+          <EntitySet Name="userroles" EntityType="Self.userrole" />
+          <EntitySet Name="usersessions" EntityType="Self.usersession" />
+          <AssociationSet Name="FK_tblClinicians_Facilities" Association="Self.FK_tblClinicians_Facilities">
+            <End Role="facility" EntitySet="facilities" />
+            <End Role="clinician" EntitySet="clinicians" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblSessions_tblCourses" Association="Self.FK_tblSessions_tblCourses">
+            <End Role="course" EntitySet="courses" />
+            <End Role="session" EntitySet="sessions" />
+          </AssociationSet>
+          <AssociationSet Name="userfacility" Association="Self.userfacility">
+            <End Role="facility" EntitySet="facilities" />
+            <End Role="user" EntitySet="users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUserSessions_tblSessions" Association="Self.FK_tblUserSessions_tblSessions">
+            <End Role="session" EntitySet="sessions" />
+            <End Role="usersession" EntitySet="usersessions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ticket_TicketCategory" Association="Self.FK_Ticket_TicketCategory">
+            <End Role="ticketcategory" EntitySet="ticketcategories" />
+            <End Role="ticket" EntitySet="tickets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ticket_Users" Association="Self.FK_Ticket_Users">
+            <End Role="user" EntitySet="users" />
+            <End Role="ticket" EntitySet="tickets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUserSessions_Users1" Association="Self.FK_tblUserSessions_Users1">
+            <End Role="user" EntitySet="users" />
+            <End Role="usersession" EntitySet="usersessions" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="eclaimlinkportalModelStoreContainer" CdmEntityContainer="eclaimlinkportalEntities">
+          <EntitySetMapping Name="clinicians">
+            <EntityTypeMapping TypeName="eclaimlinkportalModel.clinician">
+              <MappingFragment StoreEntitySet="clinician">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="License" ColumnName="License" />
+                <ScalarProperty Name="facilityId" ColumnName="facilityId" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="codingsets">
+            <EntityTypeMapping TypeName="eclaimlinkportalModel.codingset">
+              <MappingFragment StoreEntitySet="codingset">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="codingsystem" ColumnName="codingsystem" />
+                <ScalarProperty Name="codedesignation" ColumnName="codedesignation" />
+                <ScalarProperty Name="publisher" ColumnName="publisher" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="domain" ColumnName="domain" />
+                <ScalarProperty Name="filename" ColumnName="filename" />
+                <ScalarProperty Name="agreementrequest" ColumnName="agreementrequest" />
+                <ScalarProperty Name="ingenixrequest" ColumnName="ingenixrequest" />
+                <ScalarProperty Name="cdtagreementrequest" ColumnName="cdtagreementrequest" />
+                <ScalarProperty Name="downloadmessageinstead" ColumnName="downloadmessageinstead" />
+                <ScalarProperty Name="updatedate" ColumnName="updatedate" />
+                <ScalarProperty Name="isactive" ColumnName="isactive" />
+                <ScalarProperty Name="listname" ColumnName="listname" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="courses">
+            <EntityTypeMapping TypeName="eclaimlinkportalModel.course">
+              <MappingFragment StoreEntitySet="course">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="maxAtten" ColumnName="maxAtten" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="facilities_allowed_training">
+            <EntityTypeMapping TypeName="eclaimlinkportalModel.facilities_allowed_training">
+              <MappingFragment StoreEntitySet="facilities_allowed_training">
+                <ScalarProperty Name="License" ColumnName="License" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="facilities">
+            <EntityTypeMapping TypeName="eclaimlinkportalModel.facility">
+              <MappingFragment StoreEntitySet="facility">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="License" ColumnName="License" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="FacilityType" ColumnName="FacilityType" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
+                <ScalarProperty Name="CodingSet_IngenixRequested" ColumnName="CodingSet_IngenixRequested" />
+                <ScalarProperty Name="CodingSet_AgreementSigned" ColumnName="CodingSet_AgreementSigned" />
+                <ScalarProperty Name="CodingSet_CDTAgreementSigned" ColumnName="CodingSet_CDTAgreementSigned" />
+                <ScalarProperty Name="CodingSet_IngenixRequestDate" ColumnName="CodingSet_IngenixRequestDate" />
+                <ScalarProperty Name="activated" ColumnName="activated" />
+                <ScalarProperty Name="activateDate" ColumnName="activateDate" />
+                <ScalarProperty Name="ToActivate" ColumnName="ToActivate" />
+                <ScalarProperty Name="ingenix_usersno" ColumnName="ingenix_usersno" />
+                <ScalarProperty Name="validated" ColumnName="validated" />
+                <ScalarProperty Name="demo" ColumnName="demo" />
+                <ScalarProperty Name="license_eclaimlink" ColumnName="license_eclaimlink" />
+                <ScalarProperty Name="license_dha" ColumnName="license_dha" />
+                <ScalarProperty Name="ProviderType" ColumnName="ProviderType" />
+                <ScalarProperty Name="Source" ColumnName="Source" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="logs">
+            <EntityTypeMapping TypeName="eclaimlinkportalModel.log">
+              <MappingFragment StoreEntitySet="logs">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="applicationid" ColumnName="applicationid" />
+                <ScalarProperty Name="action" ColumnName="action" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="details" ColumnName="details" />
+                <ScalarProperty Name="createddate" ColumnName="createddate" />
+                <ScalarProperty Name="params" ColumnName="params" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="roles">
+            <EntityTypeMapping TypeName="eclaimlinkportalModel.role">
+              <MappingFragment StoreEntitySet="role">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sessions">
+            <EntityTypeMapping TypeName="eclaimlinkportalModel.session">
+              <MappingFragment StoreEntitySet="session">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="courseId" ColumnName="courseId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tickets">
+            <EntityTypeMapping TypeName="eclaimlinkportalModel.ticket">
+              <MappingFragment StoreEntitySet="ticket">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="createdby" ColumnName="createdby" />
+                <ScalarProperty Name="closedby" ColumnName="closedby" />
+                <ScalarProperty Name="createdat" ColumnName="createdat" />
+                <ScalarProperty Name="closedat" ColumnName="closedat" />
+                <ScalarProperty Name="lastupdate" ColumnName="lastupdate" />
+                <ScalarProperty Name="referenceno" ColumnName="referenceno" />
+                <ScalarProperty Name="categoryid" ColumnName="categoryid" />
+                <ScalarProperty Name="severity" ColumnName="severity" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="details" ColumnName="details" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="attachment" ColumnName="attachment" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="CloseDetails" ColumnName="CloseDetails" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ticketcategories">
+            <EntityTypeMapping TypeName="eclaimlinkportalModel.ticketcategory">
+              <MappingFragment StoreEntitySet="ticketcategory">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="eclaimlinkportalModel.user">
+              <MappingFragment StoreEntitySet="user">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="facilityId" ColumnName="facilityId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="userroles">
+            <EntityTypeMapping TypeName="eclaimlinkportalModel.userrole">
+              <MappingFragment StoreEntitySet="userrole">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="roleId" ColumnName="roleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="usersessions">
+            <EntityTypeMapping TypeName="eclaimlinkportalModel.usersession">
+              <MappingFragment StoreEntitySet="usersession">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="sessionId" ColumnName="sessionId" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="Occupation_Profession" ColumnName="Occupation_Profession" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

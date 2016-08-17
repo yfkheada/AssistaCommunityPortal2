@@ -1,0 +1,13 @@
+{
+  "version": "1.0.0-*",
+
+  "dependencies": {
+    "EntityFramework": "6.1.3",
+    "MySql.Data": "6.9.9",
+    "MySql.Data.Entity": "6.9.9"
+  },
+
+  "frameworks": {
+    "dnx451": { }
+  }
+}
