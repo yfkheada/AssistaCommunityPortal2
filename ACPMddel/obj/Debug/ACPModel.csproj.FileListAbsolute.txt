@@ -1,0 +1,12 @@
+C:\Users\Yaser\Documents\Visual Studio 2015\Projects\AssistaCommunityPortal\AssistaCommunityPortal\src\ACPMddel\bin\Debug\ACPModel.dll.config
+C:\Users\Yaser\Documents\Visual Studio 2015\Projects\AssistaCommunityPortal\AssistaCommunityPortal\src\ACPMddel\bin\Debug\ACPModel.dll
+C:\Users\Yaser\Documents\Visual Studio 2015\Projects\AssistaCommunityPortal\AssistaCommunityPortal\src\ACPMddel\bin\Debug\ACPModel.pdb
+C:\Users\Yaser\Documents\Visual Studio 2015\Projects\AssistaCommunityPortal\AssistaCommunityPortal\src\ACPMddel\bin\Debug\EntityFramework.dll
+C:\Users\Yaser\Documents\Visual Studio 2015\Projects\AssistaCommunityPortal\AssistaCommunityPortal\src\ACPMddel\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Yaser\Documents\Visual Studio 2015\Projects\AssistaCommunityPortal\AssistaCommunityPortal\src\ACPMddel\bin\Debug\MySql.Data.dll
+C:\Users\Yaser\Documents\Visual Studio 2015\Projects\AssistaCommunityPortal\AssistaCommunityPortal\src\ACPMddel\bin\Debug\MySql.Data.Entity.EF6.dll
+C:\Users\Yaser\Documents\Visual Studio 2015\Projects\AssistaCommunityPortal\AssistaCommunityPortal\src\ACPMddel\bin\Debug\EntityFramework.xml
+C:\Users\Yaser\Documents\Visual Studio 2015\Projects\AssistaCommunityPortal\AssistaCommunityPortal\src\ACPMddel\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Yaser\Documents\Visual Studio 2015\Projects\AssistaCommunityPortal\AssistaCommunityPortal\src\ACPMddel\obj\Debug\ACPModel.csprojResolveAssemblyReference.cache
+C:\Users\Yaser\Documents\Visual Studio 2015\Projects\AssistaCommunityPortal\AssistaCommunityPortal\src\ACPMddel\obj\Debug\ACPModel.dll
+C:\Users\Yaser\Documents\Visual Studio 2015\Projects\AssistaCommunityPortal\AssistaCommunityPortal\src\ACPMddel\obj\Debug\ACPModel.pdb

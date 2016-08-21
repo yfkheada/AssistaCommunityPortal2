@@ -1,0 +1,181 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="eclaimlinkportalModelStoreContainer" CdmEntityContainer="eclaimlinkportalEntities">
+    <EntitySetMapping Name="clinicians">
+      <EntityTypeMapping TypeName="eclaimlinkportalModel.clinician">
+        <MappingFragment StoreEntitySet="clinician">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="License" ColumnName="License" />
+          <ScalarProperty Name="facilityId" ColumnName="facilityId" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="codingsets">
+      <EntityTypeMapping TypeName="eclaimlinkportalModel.codingset">
+        <MappingFragment StoreEntitySet="codingset">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="codingsystem" ColumnName="codingsystem" />
+          <ScalarProperty Name="codedesignation" ColumnName="codedesignation" />
+          <ScalarProperty Name="publisher" ColumnName="publisher" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="domain" ColumnName="domain" />
+          <ScalarProperty Name="filename" ColumnName="filename" />
+          <ScalarProperty Name="agreementrequest" ColumnName="agreementrequest" />
+          <ScalarProperty Name="ingenixrequest" ColumnName="ingenixrequest" />
+          <ScalarProperty Name="cdtagreementrequest" ColumnName="cdtagreementrequest" />
+          <ScalarProperty Name="downloadmessageinstead" ColumnName="downloadmessageinstead" />
+          <ScalarProperty Name="updatedate" ColumnName="updatedate" />
+          <ScalarProperty Name="isactive" ColumnName="isactive" />
+          <ScalarProperty Name="listname" ColumnName="listname" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="courses">
+      <EntityTypeMapping TypeName="eclaimlinkportalModel.course">
+        <MappingFragment StoreEntitySet="course">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="maxAtten" ColumnName="maxAtten" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="facilities_allowed_training">
+      <EntityTypeMapping TypeName="eclaimlinkportalModel.facilities_allowed_training">
+        <MappingFragment StoreEntitySet="facilities_allowed_training">
+          <ScalarProperty Name="License" ColumnName="License" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="facilities">
+      <EntityTypeMapping TypeName="eclaimlinkportalModel.facility">
+        <MappingFragment StoreEntitySet="facility">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="License" ColumnName="License" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="FacilityType" ColumnName="FacilityType" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
+          <ScalarProperty Name="CodingSet_IngenixRequested" ColumnName="CodingSet_IngenixRequested" />
+          <ScalarProperty Name="CodingSet_AgreementSigned" ColumnName="CodingSet_AgreementSigned" />
+          <ScalarProperty Name="CodingSet_CDTAgreementSigned" ColumnName="CodingSet_CDTAgreementSigned" />
+          <ScalarProperty Name="CodingSet_IngenixRequestDate" ColumnName="CodingSet_IngenixRequestDate" />
+          <ScalarProperty Name="activated" ColumnName="activated" />
+          <ScalarProperty Name="activateDate" ColumnName="activateDate" />
+          <ScalarProperty Name="ToActivate" ColumnName="ToActivate" />
+          <ScalarProperty Name="ingenix_usersno" ColumnName="ingenix_usersno" />
+          <ScalarProperty Name="validated" ColumnName="validated" />
+          <ScalarProperty Name="demo" ColumnName="demo" />
+          <ScalarProperty Name="license_eclaimlink" ColumnName="license_eclaimlink" />
+          <ScalarProperty Name="license_dha" ColumnName="license_dha" />
+          <ScalarProperty Name="ProviderType" ColumnName="ProviderType" />
+          <ScalarProperty Name="Source" ColumnName="Source" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="logs">
+      <EntityTypeMapping TypeName="eclaimlinkportalModel.log">
+        <MappingFragment StoreEntitySet="logs">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="applicationid" ColumnName="applicationid" />
+          <ScalarProperty Name="action" ColumnName="action" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="details" ColumnName="details" />
+          <ScalarProperty Name="createddate" ColumnName="createddate" />
+          <ScalarProperty Name="params" ColumnName="params" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="roles">
+      <EntityTypeMapping TypeName="eclaimlinkportalModel.role">
+        <MappingFragment StoreEntitySet="role">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sessions">
+      <EntityTypeMapping TypeName="eclaimlinkportalModel.session">
+        <MappingFragment StoreEntitySet="session">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="courseId" ColumnName="courseId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tickets">
+      <EntityTypeMapping TypeName="eclaimlinkportalModel.ticket">
+        <MappingFragment StoreEntitySet="ticket">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="createdby" ColumnName="createdby" />
+          <ScalarProperty Name="closedby" ColumnName="closedby" />
+          <ScalarProperty Name="createdat" ColumnName="createdat" />
+          <ScalarProperty Name="closedat" ColumnName="closedat" />
+          <ScalarProperty Name="lastupdate" ColumnName="lastupdate" />
+          <ScalarProperty Name="referenceno" ColumnName="referenceno" />
+          <ScalarProperty Name="categoryid" ColumnName="categoryid" />
+          <ScalarProperty Name="severity" ColumnName="severity" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="details" ColumnName="details" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="attachment" ColumnName="attachment" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="CloseDetails" ColumnName="CloseDetails" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ticketcategories">
+      <EntityTypeMapping TypeName="eclaimlinkportalModel.ticketcategory">
+        <MappingFragment StoreEntitySet="ticketcategory">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="users">
+      <EntityTypeMapping TypeName="eclaimlinkportalModel.user">
+        <MappingFragment StoreEntitySet="user">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="facilityId" ColumnName="facilityId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="userroles">
+      <EntityTypeMapping TypeName="eclaimlinkportalModel.userrole">
+        <MappingFragment StoreEntitySet="userrole">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="roleId" ColumnName="roleId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="usersessions">
+      <EntityTypeMapping TypeName="eclaimlinkportalModel.usersession">
+        <MappingFragment StoreEntitySet="usersession">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="sessionId" ColumnName="sessionId" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="Occupation_Profession" ColumnName="Occupation_Profession" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
